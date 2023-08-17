@@ -1,8 +1,10 @@
+require_relative 'models/people.rb'
+
 class App < Sinatra::Base
 
     get '/' do
         @datastring = People.all_as_string
-        "Använd routerna images & people"
+        erb :main
     end
 
     get '/images' do
