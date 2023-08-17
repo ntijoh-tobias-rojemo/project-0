@@ -7,3 +7,9 @@ const data = document
 
 var correct = 0;
 const total = data.length;
+
+const display = document.getElementById("image-display");
+const input = document.getElementById("input-field");
+const button = document.getElementById("submit-button")
+const counter = document.getElementById("counter");
+document.getElementById("total").innerHTML = total;
