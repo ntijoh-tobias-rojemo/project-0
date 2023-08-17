@@ -1,7 +1,7 @@
 class App < Sinatra::Base
 
     get '/' do
-        "Hello, world!"
+        @people = People.all
     end
 
     get '/images' do
