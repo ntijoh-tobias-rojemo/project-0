@@ -33,14 +33,10 @@ button.addEventListener("click", () => {
 });
 
 function getNext() {
-  return left.pop(getRandInt(0, left.length));
+  return left.splice((Math.random() * left.length) | 0, 1)[0];
 }
 
 function updatePage() {
   display.src = current.image;
   counter.innerHTML = correct;
-}
-
-function getRandInt(min, max) {
-  return Math.floor(min + Math.random() * (max - min));
 }
