@@ -29,7 +29,6 @@ button.addEventListener("click", () => {
   }
   current = getNext();
   updatePage();
-  input.value = "";
 });
 
 function getNext() {
@@ -39,4 +38,5 @@ function getNext() {
 function updatePage() {
   display.src = current.image;
   counter.innerHTML = correct;
+  input.value = "";
 }
