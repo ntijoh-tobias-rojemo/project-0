@@ -1,6 +1,7 @@
 class App < Sinatra::Base
 
     get '/' do
+        @datastring = People.all_as_string
         "Använd routerna images & people"
     end
 
