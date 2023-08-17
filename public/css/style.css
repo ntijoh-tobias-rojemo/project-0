@@ -1,9 +1,10 @@
-.img{
+img{
 
     width: 200px;
     height: 200px;
     background-color: pink;
-    position: absolute;
+    position: ;
+    margin: 10px;
 
 }
 
