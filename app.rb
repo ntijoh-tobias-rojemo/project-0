@@ -1,15 +1,15 @@
 class App < Sinatra::Base
 
     get '/' do
-        @people = People.all
+        "Använd routerna images & people"
     end
 
     get '/images' do
-        erb("images")
+        erb :images
     end
 
     get '/people' do
-        erb("people")
+        erb :people
     end
     
 end
