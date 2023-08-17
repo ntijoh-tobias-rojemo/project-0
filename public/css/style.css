@@ -1,18 +1,46 @@
 img{
 
-    width: 14%;
-    height: 20%;
-    background-color: pink;
+    width: 14vw;
+    /* height: 20vh; */
+    
     position: ;
-    margin: 10px;
+    
 
 }
 
 body{
 
 
-
+    
     background-color: pink;
+
+
+}
+
+p{
+
+
+}
+
+.container{
+
+    width: 14%;
+    /*height: 20%;*/
+    float: left;
+    margin: 5px;
+
+    text-align: center;
+
+
+
+
+}
+
+
+.child{
+
+
+    
 
 
 }
