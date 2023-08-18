@@ -1,19 +1,14 @@
 img{
 
-    width: 14vw;
+    width: 20vw;
     /* height: 20vh; */
-    
-    
-
     
 
 }
 
 body{
 
-
-    
-    background-color: pink;
+    background-color: rgb(245, 240, 240);
 
 
 }
@@ -28,7 +23,63 @@ body{
     text-align: center;
 
 
+}
+
+div#center{
+    
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 14vw;
+    margin: auto;
+    
+    margin-top: 10vw;
 
 
 }
 
+#image-display{
+
+    left: 43vw;
+
+}
+
+input{
+
+    width: 13.7vw;
+    height: 1.5vh;
+    border-radius: 10px;
+    border: 1px solid gray;
+
+
+}
+
+button{
+
+
+    border: 0;
+    width: 14vw;
+    height: 2vh;
+    background-color: rgb(86, 100, 211);
+    border-radius: 20px;
+    color: #fff;
+    margin-top: 0.5vh;
+
+}
+
+p{
+
+    font-size: 30px;
+
+}
+
+p#counter{
+
+
+}
+
+p#total{
+
+    
+
+}
