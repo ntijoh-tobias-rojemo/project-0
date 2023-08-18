@@ -1,85 +1,74 @@
-img{
-
-    width: 20vw;
-    /* height: 20vh; */
-    
-
-}
-
-body{
-
+body {
     background-color: rgb(245, 240, 240);
-
-
 }
 
-.container{
+h1 {
+    text-align: center;
+}
 
-    width: 14%;
-    /*height: 20%;*/
+p, span, button, input {
+    font-size: 2rem;
+    text-align: center;
+}
+
+.container {
+    width: 14vw;
     float: left;
     margin: 5px;
-
     text-align: center;
-
-
+}
+.container p {
+    font-size: 1rem;
 }
 
-div#center{
-    
+#center {
     display: flex;
     align-items: center;
     flex-direction: column;
-    width: 14vw;
     margin: auto;
-    
     margin-top: 10vw;
-
-
 }
 
-#image-display{
+.scorecard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.scorecard p{
+    margin: 1px;
+}
 
+
+img {
+    width: 14vw;
+}
+#image-display {
+    width: 50vw;
     left: 43vw;
-
 }
 
-input{
-
-    width: 13.7vw;
-    height: 1.5vh;
+#response-box {
+    width: 50vw;
+    height: 5vh;
+    display: flex;
+    align-content: center;
     border-radius: 10px;
     border: 1px solid gray;
-
-
 }
 
-button{
+input {
+    width: 25vw;
+    height: 5vh;
+    border-radius: 10px;
+    border: 1px solid gray;
+}
 
-
+button {
     border: 0;
-    width: 14vw;
-    height: 2vh;
+    width: 25vw;
+    height: 5vh;
     background-color: rgb(86, 100, 211);
     border-radius: 20px;
     color: #fff;
     margin-top: 0.5vh;
-
-}
-
-p{
-
-    font-size: 30px;
-
-}
-
-p#counter{
-
-
-}
-
-p#total{
-
-    
-
 }
