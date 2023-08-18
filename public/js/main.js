@@ -53,7 +53,7 @@ function tick() {
     responseBox.style.backgroundColor = "lightgreen";
   } else {
     response.innerHTML = `Incorrect. The correct name was ${current.name}`;
-    responseBox.style.backgroundColor = "lightred";
+    responseBox.style.backgroundColor = "pink";
   }
   if (left.length == 0) {
     window.alert(`You got ${correct}/${total} correct!`);
