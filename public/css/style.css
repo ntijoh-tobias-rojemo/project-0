@@ -2,6 +2,14 @@ body {
   background-color: whitesmoke;
 }
 
+main {
+    display: flex;
+    justify-content: space-around;
+    row-gap: 3vh;
+    flex-wrap: wrap;
+    padding: 1vw;
+}
+
 h1 {
   text-align: center;
 }
@@ -18,8 +26,8 @@ input,
 .container {
   width: 14vw;
   float: left;
-  margin: 5px;
   text-align: center;
+  border: 1px solid gray;
 }
 
 .container p {
@@ -46,6 +54,9 @@ input,
 
 img {
   width: 14vw;
+}
+.container img {
+    margin-bottom: -4px;
 }
 
 #image-display {
