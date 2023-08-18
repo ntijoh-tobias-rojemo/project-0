@@ -48,6 +48,8 @@ input.addEventListener("keydown", (event) => {
 function tick() {
   const guess = input.value.toLowerCase();
   if (
+    // if guess is only for firt name, compare only to first name, otherwise require full name
+    // for people with nicknames, also accept nicknames
     (!guess.includes(" ") &&
       (current.name.split(/\s+/)[0].toLowerCase() == guess ||
         (current.nick != "NO_NICK" &&
