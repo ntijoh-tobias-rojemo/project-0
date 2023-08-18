@@ -11,6 +11,8 @@ const display = document.getElementById("image-display");
 const input = document.getElementById("input-field");
 const button = document.getElementById("submit-button");
 const counter = document.getElementById("counter");
+const responseBox = document.getElementById("response-box");
+const response = document.getElementById("response");
 
 // returns a random element from the people left and removes it from the array
 const getNext = () => left.splice((Math.random() * left.length) | 0, 1)[0];
@@ -40,12 +42,19 @@ input.addEventListener("keydown", (event) => {
 });
 
 function tick() {
-  const guess = input.value;
+  const guess = input.value.toLowerCase();
   if (
-    (!guess.includes(" ") && current.name.split(/\s+/)[0] == guess) ||
-    current.name == guess
-  )
+    (!guess.includes(" ") &&
+      current.name.split(/\s+/)[0].toLowerCase() == guess) ||
+    current.name.toLowerCase() == guess
+  ) {
     correct++;
+    response.innerHTML = "Correct!";
+    responseBox.style.backgroundColor = "lightgreen";
+  } else {
+    response.innerHTML = `Incorrect. The correct name was ${current.name}`;
+    responseBox.style.backgroundColor = "lightred";
+  }
   if (left.length == 0) {
     window.alert(`You got ${correct}/${total} correct!`);
     left = [...data];
