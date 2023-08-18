@@ -1,4 +1,10 @@
+<header>
+    <h1>Facit!</h1>
+</header>
+
 <% @people.each do |person| %>
-    <div class="container"><p> <%= person["name"] %> </p>
-    <img src="<%= person["image"] %>"/></div>
+    <div class="container">
+        <p> <%= person["name"] %> </p>
+        <img src="<%= person["image"] %>"/>
+    </div>
 <% end %>
