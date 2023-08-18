@@ -50,9 +50,10 @@ function tick() {
   if (
     (!guess.includes(" ") &&
       (current.name.split(/\s+/)[0].toLowerCase() == guess ||
-        current.nick.split(/\s+/)[0].toLowerCase() == guess)) ||
+        (current.nick != "NO_NICK" &&
+          current.nick.split(/\s+/)[0].toLowerCase() == guess))) ||
     current.name.toLowerCase() == guess ||
-    current.nick.toLowerCase() == guess
+    (current.nick != "NO_NICK" && current.nick.toLowerCase() == guess)
   ) {
     correct++;
     response.innerHTML = "Correct!";
