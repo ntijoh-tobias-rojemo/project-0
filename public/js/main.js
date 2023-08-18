@@ -3,7 +3,11 @@ const data = document
   .getElementById("data")
   .innerHTML.split("§§")
   .map((a) => {
-    return { image: a.split("§")[0], name: a.split("§")[1] };
+    return {
+      image: a.split("§")[0],
+      name: a.split("§")[1],
+      nick: a.split("§")[2],
+    };
   });
 
 // get elements
@@ -45,8 +49,10 @@ function tick() {
   const guess = input.value.toLowerCase();
   if (
     (!guess.includes(" ") &&
-      current.name.split(/\s+/)[0].toLowerCase() == guess) ||
-    current.name.toLowerCase() == guess
+      (current.name.split(/\s+/)[0].toLowerCase() == guess ||
+        current.nick.split(/\s+/)[0].toLowerCase() == guess)) ||
+    current.name.toLowerCase() == guess ||
+    current.nick.toLowerCase() == guess
   ) {
     correct++;
     response.innerHTML = "Correct!";
