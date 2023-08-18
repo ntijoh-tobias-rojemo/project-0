@@ -41,7 +41,11 @@ input.addEventListener("keydown", (event) => {
 
 function tick() {
   const guess = input.value;
-  if (current.name == guess) correct++;
+  if (
+    (!guess.includes(" ") && current.name.split(/\s+/)[0] == guess) ||
+    current.name == guess
+  )
+    correct++;
   if (left.length == 0) {
     window.alert(`You got ${correct}/${total} correct!`);
     left = [...data];
