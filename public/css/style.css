@@ -50,10 +50,16 @@ img {
 #response-box {
     width: 50vw;
     height: 5vh;
+
     display: flex;
     align-content: center;
+    
     border-radius: 10px;
     border: 1px solid gray;
+}
+#response-box span {
+    font-size: 1rem;
+    text-align: center;
 }
 
 input {
