@@ -59,9 +59,11 @@ function tick() {
   ) {
     correct++;
     response.innerHTML = "Correct!";
+    response.style.fontSize = "2rem";
     responseBox.style.backgroundColor = "lightgreen";
   } else {
     response.innerHTML = `Incorrect. The correct name was ${current.name}`;
+    response.style.fontSize = "1rem";
     responseBox.style.backgroundColor = "pink";
   }
   if (left.length == 0) {
