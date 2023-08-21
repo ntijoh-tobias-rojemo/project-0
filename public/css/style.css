@@ -34,6 +34,18 @@ input,
   font-size: 1rem;
 }
 
+.green{
+
+  background-color: lightgreen;
+
+}
+
+.red{
+
+  background-color: pink;
+
+}
+
 #center {
   margin: auto;
   margin-top: 5vw;
