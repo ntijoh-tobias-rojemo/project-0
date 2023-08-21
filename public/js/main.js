@@ -18,8 +18,8 @@ const counter = document.getElementById("counter");
 const responseBox = document.getElementById("response-box");
 const response = document.getElementById("response");
 
-// returns a random element from the people left and removes it from the array
-const getNext = () => left.splice((Math.random() * left.length) | 0, 1)[0];
+// returns a random element from the remaining people and removes it from the array
+const getNext = () => remaining.splice((Math.random() * remaining.length) | 0, 1)[0];
 
 // updates elements on the page
 function updatePage() {
@@ -33,7 +33,7 @@ var correct = 0;
 const total = data.length;
 document.getElementById("total").innerHTML = total;
 
-var left = [...data];
+var remaining = [...data];
 var current = getNext();
 updatePage();
 
@@ -66,9 +66,9 @@ function tick() {
     response.style.fontSize = "1rem";
     responseBox.style.backgroundColor = "pink";
   }
-  if (left.length == 0) {
+  if (remaining.length == 0) {
     window.alert(`You got ${correct}/${total} correct!`);
-    left = [...data];
+    remaining = [...data];
     correct = 0;
   }
   current = getNext();
