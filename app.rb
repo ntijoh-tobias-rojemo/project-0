@@ -2,6 +2,10 @@ require_relative 'models/people.rb'
 
 class App < Sinatra::Base
 
+    get '/' do
+        redirect :"/0"
+    end
+
     get '/:classid' do |classid|
         @datastring = People.class_as_string(classid)
         erb :main
