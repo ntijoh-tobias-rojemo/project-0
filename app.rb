@@ -1,5 +1,6 @@
 require_relative 'models/people.rb'
 require_relative 'models/users.rb'
+enable :sessions
 
 class App < Sinatra::Base
 
@@ -37,11 +38,19 @@ class App < Sinatra::Base
         erb :defence
     end  
 
+    get '/admin' do
+        erb :admin
+    end
+
     post '/login' do
         id = Users.login(params[:username], params[:password])
+        session[:id] = id
+        if id do redirect :"/admin"
+        redirect :"/login"
     end
 
     post '/register' do
         Users.register(params[:username], params[:password])
+        redirect :"/login"
     end
 end
