@@ -1,6 +1,6 @@
 // Unpack datastring
 const data = document
-  .getElementById("data") //namn§img§nick§§nästa namn
+  .getElementById("data")
   .innerHTML.split("§§")
   .map((a) => {
     return {
@@ -18,8 +18,8 @@ const counter = document.getElementById("counter");
 const responseBox = document.getElementById("response-box");
 const response = document.getElementById("response");
 
-// returns a random element from the people remaining and removes it from the array
-const getNext = () => remaining.splice((Math.random() * remaining.length) | 0, 1)[0];
+// returns a random element from the people left and removes it from the array
+const getNext = () => left.splice((Math.random() * left.length) | 0, 1)[0];
 
 // updates elements on the page
 function updatePage() {
@@ -33,7 +33,7 @@ var correct = 0;
 const total = data.length;
 document.getElementById("total").innerHTML = total;
 
-var remaining = [...data];
+var left = [...data];
 var current = getNext();
 updatePage();
 
@@ -46,7 +46,7 @@ input.addEventListener("keydown", (event) => {
 });
 
 function tick() {
-  const guess = input.value.toLowerCase();
+  const guess = input.value.toLowerCase().split(/\s+/).join(" ");
   if (
     // if guess is only for firt name, compare only to first name, otherwise require full name
     // for people with nicknames, also accept nicknames
@@ -54,7 +54,7 @@ function tick() {
       (current.name.split(/\s+/)[0] == guess ||
         (current.nick != "NO_NICK" &&
           current.nick.split(/\s+/)[0] == guess))) ||
-    current.name == guess.split(/\s+/).join(" ") ||
+    current.name == guess ||
     (current.nick != "NO_NICK" && current.nick == guess)
   ) {
     correct++;
@@ -62,13 +62,13 @@ function tick() {
     response.style.fontSize = "2rem";
     responseBox.style.backgroundColor = "lightgreen";
   } else {
-    response.innerHTML = `Incorrect. The correct name was ${current.name}!`;
+    response.innerHTML = `Incorrect. The correct name was ${current.name}`;
     response.style.fontSize = "1rem";
     responseBox.style.backgroundColor = "pink";
   }
-  if (remaining.length == 0) {
+  if (left.length == 0) {
     window.alert(`You got ${correct}/${total} correct!`);
-    remaining = [...data];
+    left = [...data];
     correct = 0;
   }
   current = getNext();
