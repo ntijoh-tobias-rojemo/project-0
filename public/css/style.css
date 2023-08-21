@@ -3,11 +3,11 @@ body {
 }
 
 main {
-    display: flex;
-    justify-content: space-around;
-    row-gap: 3vh;
-    flex-wrap: wrap;
-    padding: 1vw;
+  display: flex;
+  justify-content: space-around;
+  row-gap: 3vh;
+  flex-wrap: wrap;
+  padding: 1vw;
 }
 
 h1 {
@@ -55,23 +55,17 @@ input,
 img {
   width: 14vw;
 }
+
 .container img {
-    margin-bottom: -4px;
+  margin-bottom: -4px;
 }
 
 #image-display {
   width: 50vw;
   left: 43vw;
-}
-
-#response-box {
-  height: 5vh;
-  width: 50vw;
   border: 1px solid gray;
-}
-
-.input {
-  flex-direction: row;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
 }
 
 input,
@@ -91,6 +85,19 @@ button {
 input,
 button {
   border-radius: 20px;
+}
+
+#response-box {
+  height: 5vh;
+  width: 50vw;
+  border: 1px solid gray;
+}
+
+#response-box,
+input {
+  border-top: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }
 
 .scorecard {
