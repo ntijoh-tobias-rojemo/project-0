@@ -111,3 +111,15 @@ input {
 .scorecard {
   height: min-content;
 }
+
+.defence input {
+  position: absolute;
+  bottom: 0;
+  left: auto;
+}
+
+.defence p {
+  position: absolute;
+  bottom: 0;
+  left: 70vw;
+}

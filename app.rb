@@ -25,5 +25,10 @@ class App < Sinatra::Base
         @people = People.class(classid)
         @answers = answers.to_i
         erb :results
-    end  
+    end
+
+    get '/:classid/defence' do |classid|
+        @datastring = People.class_as_string(classid)
+        erb :defence
+    end
 end
