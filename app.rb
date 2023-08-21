@@ -18,15 +18,8 @@ class App < Sinatra::Base
     end
 
     get '/results/:answers' do |answers|
-
         @people = People.all
-        answers = answers.to_i
-
-        @answers = []
-        for i in 1..@people.length do
-            @answers << (answers & (1 << i) > 0)
-        end
-
+        @answers = answers.to_i
         erb :results
     end  
 end
