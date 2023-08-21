@@ -30,5 +30,15 @@ class App < Sinatra::Base
     get '/:classid/defence' do |classid|
         @datastring = People.class_as_string(classid)
         erb :defence
+    end  
+
+
+    get '/login' do
+        erb :login
+    end
+
+
+    post '/login' do
+        
     end
 end
