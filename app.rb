@@ -1,9 +1,14 @@
 require_relative 'models/people.rb'
+require_relative 'models/users.rb'
 
 class App < Sinatra::Base
 
     get '/' do
         redirect :"/0"
+    end
+
+    get '/login' do
+        erb :login
     end
 
     get '/:classid' do |classid|
@@ -32,13 +37,11 @@ class App < Sinatra::Base
         erb :defence
     end  
 
-
-    get '/login' do
-        erb :login
+    post '/login' do
+        id = Users.login(params[:username], params[:password])
     end
 
-
-    post '/login' do
-        
+    post '/register' do
+        Users.register(params[:username], params[:password])
     end
 end
