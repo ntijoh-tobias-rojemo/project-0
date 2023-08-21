@@ -73,7 +73,7 @@ img {
 }
 
 #image-display {
-  width: 50vw;
+  width: 32vw;
   left: 43vw;
   border: 1px solid gray;
   border-top-left-radius: 20px;
@@ -101,7 +101,7 @@ button {
 
 #response-box {
   height: 5vh;
-  width: 50vw;
+  width: 32vw;
   border: 1px solid gray;
 }
 

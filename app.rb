@@ -24,7 +24,7 @@ class App < Sinatra::Base
 
         @answers = []
         for i in 1..@people.length do
-            @answers << answers & (1 << i) > 0
+            @answers << (answers & (1 << i) > 0)
         end
 
         erb :results
