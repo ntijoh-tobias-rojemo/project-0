@@ -5,7 +5,7 @@ const data = document
   .map((a) => {
     return {
       image: a.split("§")[0],
-      name: a.split("§")[1],
+      name: a.split("§")[1].toLowerCase(),
       nick: a.split("§")[2],
     };
   });
@@ -51,11 +51,11 @@ function tick() {
     // if guess is only for firt name, compare only to first name, otherwise require full name
     // for people with nicknames, also accept nicknames
     (!guess.includes(" ") &&
-      (current.name.split(/\s+/)[0].toLowerCase() == guess ||
+      (current.name.split(/\s+/)[0] == guess ||
         (current.nick != "NO_NICK" &&
-          current.nick.split(/\s+/)[0].toLowerCase() == guess))) ||
-    current.name.toLowerCase() == guess ||
-    (current.nick != "NO_NICK" && current.nick.toLowerCase() == guess)
+          current.nick.split(/\s+/)[0] == guess))) ||
+    current.name == guess.split(/\s+/).join(" ") ||
+    (current.nick != "NO_NICK" && current.nick == guess)
   ) {
     correct++;
     response.innerHTML = "Correct!";
