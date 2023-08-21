@@ -8,7 +8,7 @@ class People
     #Returnerar samtligt inehåll i databsen som en sträng.
     def self.all_as_string
         data = db.execute('SELECT * FROM people')
-        return data.map { |person| "#{person["image"]}§#{person["name"]}§#{person["nickname"] || "NO_NICK"}" }.join("§§")
+        return data.map { |person| "#{person["id"]}§#{person["image"]}§#{person["name"]}§#{person["nickname"] || "NO_NICK"}" }.join("§§")
     end
 
     private

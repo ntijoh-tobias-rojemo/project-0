@@ -4,9 +4,10 @@ const data = document
   .innerHTML.split("§§")
   .map((a) => {
     return {
-      image: a.split("§")[0],
-      name: a.split("§")[1].toLowerCase(),
-      nick: a.split("§")[2],
+      id: a.split("§")[0],
+      image: a.split("§")[1],
+      name: a.split("§")[2],
+      nick: a.split("§")[3],
     };
   });
 
@@ -24,12 +25,12 @@ const getNext = () => data.splice((Math.random() * data.length) | 0, 1)[0];
 // updates elements on the page
 function updatePage() {
   display.src = current.image;
-  counter.innerHTML = correct.length;
+  counter.innerHTML = correct.toString(2).replace(/0/g, "").length;
   input.value = "";
 }
 
 // setup
-const correct = [];
+var correct = 0;
 document.getElementById("total").innerHTML = data.length;
 var current = getNext();
 updatePage();
@@ -48,13 +49,13 @@ function tick() {
     // if guess is only for firt name, compare only to first name, otherwise require full name
     // for people with nicknames, also accept nicknames
     (!guess.includes(" ") &&
-      (current.name.split(/\s+/)[0] == guess ||
+      (current.name.split(/\s+/)[0].toLowerCase() == guess ||
         (current.nick != "NO_NICK" &&
-          current.nick.split(/\s+/)[0] == guess))) ||
-    current.name == guess ||
-    (current.nick != "NO_NICK" && current.nick == guess)
+          current.nick.split(/\s+/)[0].toLowerCase() == guess))) ||
+    current.name.toLowerCase() == guess ||
+    (current.nick != "NO_NICK" && current.nick.toLowerCase() == guess)
   ) {
-    correct.push(current.name)
+    correct |= 1 << current.id;
     response.innerHTML = "Correct!";
     response.style.fontSize = "2rem";
     responseBox.style.backgroundColor = "lightgreen";
@@ -64,7 +65,7 @@ function tick() {
     responseBox.style.backgroundColor = "pink";
   }
   if (data.length == 0) {
-    // send to result page
+    window.location.href += `results/${correct}`;
   }
   current = getNext();
   updatePage();
