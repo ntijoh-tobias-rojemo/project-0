@@ -4,9 +4,9 @@
 
 <main>
     <% @people.each do |person| %>
-        <div class="container <%= answers[person["id"]-1]? "green" : "red" %>" >
+        <div class="container <%= @answers[person["id"]-1]? "green" : "red" %>" >
             <p> <%= person["name"] %> </p>
-            <img src="<%= person["image"] %>"/>
+            <img src="/<%= person["image"] %>"/>
         </div>
     <% end %>
 </main>

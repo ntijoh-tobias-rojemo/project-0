@@ -23,10 +23,10 @@ class App < Sinatra::Base
 
        
         @people = People.all
-
+        answers = answers.to_i
         output = []
         for i in 1..@people.length do
-            if answers << i & 2**(answers.length-1) > 0
+            if answers << i & 2**(@people.length-1) > 0
                 output << true
 
             else
