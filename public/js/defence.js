@@ -35,7 +35,7 @@ class SneakyEnemy extends Enemy {
 
 class JumpstartEnemy extends Enemy {
   calcProgress(progress) {
-    return 1 + Math.log(progress);
+    return 2 - 2 ** ((1 - progress) ** 3);
   }
 }
 
