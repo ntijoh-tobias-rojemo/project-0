@@ -45,7 +45,7 @@ class App < Sinatra::Base
     post '/login' do
         id = Users.login(params[:username], params[:password])
         session[:id] = id
-        if id do redirect :"/admin"
+        redirect :"/admin" if id
         redirect :"/login"
     end
 
