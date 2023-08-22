@@ -34,11 +34,11 @@ input,
   font-size: 1rem;
 }
 
-.green{
+.green {
   background-color: lightgreen;
 }
 
-.red{
+.red {
   background-color: pink;
 }
 
@@ -112,9 +112,13 @@ input {
   height: min-content;
 }
 
-.defence #game-area {
-  width: 100vw;
-  height: 100vh;
+.defence, #game-area {
+  overflow: hidden;
+}
+
+#game-area {
+  width: 99vw;
+  height: 90vh;
 }
 
 .defence input {

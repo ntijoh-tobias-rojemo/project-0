@@ -11,7 +11,7 @@ class Enemy {
     this.progress++;
     this.element.style.left = `${this.x * 80}%`;
     this.element.style.top = `${
-      this.calcProgress(this.progress / this.maxProgress) * 100
+      this.calcProgress(this.progress / this.maxProgress) * 100 - 20
     }%`;
   }
 
