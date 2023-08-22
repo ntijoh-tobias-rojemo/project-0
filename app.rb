@@ -69,6 +69,6 @@ class App < Sinatra::Base
     end
 
     error 403 do
-        "Access forbidden"
+        "Access denied"
     end
 end
