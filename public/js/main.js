@@ -65,7 +65,7 @@ function tick() {
     responseBox.style.backgroundColor = "pink";
   }
   if (data.length == 0) {
-    window.location.href += `results/${correct}`;
+    window.location.href += `/results/${correct}`;
   }
   current = getNext();
   updatePage();
