@@ -5,9 +5,9 @@ require_relative 'models/users.rb'
 
 class App < Sinatra::Base
     #enable :sessions
-    use Rack::Session::Cookie, :key => 'rack.session',
-                            :path => '/',
-                            :secret => 'your_secret'
+    use Rack::Session::Cookie,  :key => 'rack.session',
+                                :path => '/',
+                                :secret => 'your_secret'
 
     get '/' do
         redirect :"/0"
