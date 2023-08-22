@@ -20,6 +20,10 @@ class People
         return data.map { |person| "#{person["id"]}§#{person["image"]}§#{person["name"]}§#{person["nickname"] || "NO_NICK"}" }.join("§§")
     end
 
+    def self.create(name, nickname, classid, image)
+        db.execute('INSERT INTO people (name, nickname, classid, image) VALUES(?,?,?,?)' name, nickname, classid, image)
+    end
+
     private
     #Returnerar en databas om den finns, annars skapas en.
     def self.db
