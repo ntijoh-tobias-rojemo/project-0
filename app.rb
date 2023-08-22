@@ -3,7 +3,10 @@ require 'erb'
 require_relative 'models/people.rb'
 require_relative 'models/users.rb'
 
-enable :sessions
+#enable :sessions
+use Rack::Session::Cookie, :key => 'rack.session',
+                           :path => '/',
+                           :secret => 'your_secret'
 
 get '/' do
     redirect :"/0"

@@ -13,9 +13,9 @@ class Users
     end
 
     def self.login(username, password)
-        data = db.execute('SELECT id, password FROM users WHERE username = ?', username)
+        data = db.execute('SELECT id, password, admin FROM users WHERE username = ?', username)
         return nil if data.empty?
-        return data[0]["id"] if BCrypt::Password.new(data[0]['password']) == password
+        return data[0]["admin"] if BCrypt::Password.new(data[0]['password']) == password
         return nil
     end
 
