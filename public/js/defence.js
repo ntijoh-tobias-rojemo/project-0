@@ -27,9 +27,15 @@ class Enemy {
   }
 }
 
-class JumpstartEnemy extends Enemy {
+class SneakyEnemy extends Enemy {
   calcProgress(progress) {
     return 1 - Math.log(progress);
+  }
+}
+
+class JumpstartEnemy extends Enemy {
+  calcProgress(progress) {
+    return 1 + Math.log(progress);
   }
 }
 
@@ -128,6 +134,12 @@ function spawn() {
     );
   } else if (choice < 0.2) {
     enemy = new JumpstartEnemy(
+      enemyData,
+      (1000 + Math.random() * 9000) | 0,
+      element
+    );
+  } else if (choice < 0.3) {
+    enemy = new SneakyEnemy(
       enemyData,
       (1000 + Math.random() * 9000) | 0,
       element
