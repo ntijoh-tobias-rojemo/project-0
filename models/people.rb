@@ -21,7 +21,7 @@ class People
     end
 
     def self.create(name, nickname, classid, image)
-        db.execute('INSERT INTO people (name, nickname, classid, image) VALUES(?,?,?,?)' name, nickname, classid, image)
+        db.execute('INSERT INTO people (name, nickname, classid, image) VALUES (?,?,?,?)', name, nickname, classid, image)
     end
 
     private
