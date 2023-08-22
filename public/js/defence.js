@@ -27,6 +27,18 @@ class Enemy {
   }
 }
 
+class JumpstartEnemy extends Enemy {
+  calcProgress(progress) {
+    return 1 - Math.log(progress);
+  }
+}
+
+class AcceleratingEnemy extends Enemy {
+  calcProgress(progress) {
+    return 2 ** (progress ** 5) - 1;
+  }
+}
+
 // Unpack datastring
 const gameData = document
   .getElementById("data")
@@ -80,7 +92,7 @@ function attack() {
       enemy.name.toLowerCase() == guess ||
       (enemy.nick != "NO_NICK" && enemy.nick.toLowerCase() == guess)
     ) {
-      score += 10000 / enemy.maxProgress | 0;
+      score += (10000 / enemy.maxProgress) | 0;
       enemy.kill();
     }
   });
@@ -106,11 +118,24 @@ function spawn() {
   const element = document.createElement("img");
   element.src = enemyData.image;
   area.appendChild(element);
-  const enemy = new Enemy(
-    enemyData,
-    (1000 + Math.random() * 9000) | 0,
-    element
-  );
+  let enemy;
+  const choice = Math.random();
+  if (choice < 0.1) {
+    enemy = new AcceleratingEnemy(
+      enemyData,
+      (1000 + Math.random() * 9000) | 0,
+      element
+    );
+  } else if (choice < 0.2) {
+    enemy = new JumpstartEnemy(
+      enemyData,
+      (1000 + Math.random() * 9000) | 0,
+      element
+    );
+  } else {
+    enemy = new Enemy(enemyData, (1000 + Math.random() * 9000) | 0, element);
+  }
+
   active.push(enemy);
 }
 
