@@ -55,6 +55,6 @@ class App < Sinatra::Base
     end
 
     post '/create_student' do
-        
+        redirect :"/403" unless (Users.get(session[:id])["admin"] == 1)
     end
 end
