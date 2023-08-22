@@ -1,5 +1,7 @@
+require 'sinatra'
 require_relative 'models/people.rb'
 require_relative 'models/users.rb'
+
 enable :sessions
 
 class App < Sinatra::Base
