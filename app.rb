@@ -59,6 +59,6 @@ class App < Sinatra::Base
     post '/create_student' do
         redirect :"/403" unless (Users.get(session[:id])["admin"] == 1)
         People.create(params[:name], params[:nickname], params[:classid], "/img/#{params[:name]}.jpeg")
-        File.open(public"/img/#{params[:name]}.jpeg , wb") {|file| file.write(params[:image][:tempfile].read)} # Stort F File är en klass som defineras inom ruby som används för att interagera med filsustemet, lilla variabel som definerad i programmet
+        File.open(public"/img/#{params[:name]}.jpeg , wb") {|file| file.write(params[:image][:tempfile].read)} # Stort F File är en klass som defineras inom ruby som används för att interagera med filsustemet, lilla f variabel som definerad i programmet
     end
 end
