@@ -23,7 +23,11 @@ class People
     end
 
     def self.create(name, nickname, classid, image)
-        db.execute('INSERT INTO people (name, nickname, classid, image) VALUES (?,?,?,?)', name, nickname, classid, image)
+        if nickname == ""
+            db.execute('INSERT INTO people (name, classid, image) VALUES (?,?,?)', name, classid, image)
+        else
+            db.execute('INSERT INTO people (name, nickname, classid, image) VALUES (?,?,?,?)', name, nickname, classid, image)
+        end
     end
 
     private
