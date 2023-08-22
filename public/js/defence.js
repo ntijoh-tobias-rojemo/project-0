@@ -77,7 +77,7 @@ function attack() {
 
 // spawns an enemy
 function spawn() {
-  const enemyData = data[(Math.random() * data.length) | 0];
+  const enemyData = getNext();
   const element = document.createElement("img");
   element.src = enemyData.image;
   area.appendChild(element);
