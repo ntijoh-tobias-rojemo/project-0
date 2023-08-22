@@ -1,1 +1,1 @@
-window.addEventListener("keydown", (key) => {if (key.keyCode == 13) window.history.back() })
+window.addEventListener("keydown", (key) => {if (key.key == "Enter") window.history.back() })

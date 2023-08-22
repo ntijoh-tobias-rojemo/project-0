@@ -38,7 +38,7 @@ updatePage();
 // each time the button is clicked or enter is pressed in the textbox, run the page logic
 button.addEventListener("click", tick);
 input.addEventListener("keydown", (event) => {
-  if (event.keyCode == 13) {
+  if (event.key == "Enter") {
     tick();
   }
 });
@@ -48,7 +48,7 @@ function tick() {
   if (
     // if guess is only for firt name, compare only to first name, otherwise require full name
     // for people with nicknames, also accept nicknames
-    (!guess.split(/\s+/).length > 1 &&
+    (guess.split(/\s+/).length == 1 &&
       (current.name.split(/\s+/)[0].toLowerCase() == guess ||
         (current.nick != "NO_NICK" &&
           current.nick.split(/\s+/)[0].toLowerCase() == guess))) ||
