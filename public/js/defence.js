@@ -1,6 +1,7 @@
 class Enemy {
-  constructor(name, maxProgress, element) {
+  constructor(name, nick, maxProgress, element) {
     this.name = name;
+    this.nick = nick;
     this.element = element;
     this.x = Math.random();
     this.progress = 0;
@@ -43,6 +44,7 @@ const counter = document.getElementById("counter");
 
 var remaining = [...data];
 var active = [];
+var score = 0;
 
 setInterval(runTick, 1);
 function runTick() {
@@ -66,13 +68,31 @@ input.addEventListener("keydown", (event) => {
 function attack() {
   const guess = input.value.toLowerCase().split(/\s+/).join(" ");
   active.forEach((enemy) => {
-    if (enemy.name.toLowerCase().split(/\s+/)[0] == guess.split(/\s+/)[0])
+    if (
+      (!guess.split(/\s+/).length > 1 &&
+        (enemy.name.split(/\s+/)[0].toLowerCase() == guess ||
+          (enemy.nick != "NO_NICK" &&
+            enemy.nick.split(/\s+/)[0].toLowerCase() == guess))) ||
+      enemy.name.toLowerCase() == guess ||
+      (enemy.nick != "NO_NICK" && enemy.nick.toLowerCase() == guess)
+    ) {
       enemy.kill();
+      score++;
+    }
   });
   active = active.filter(
-    (enemy) => enemy.name.toLowerCase().split(/\s+/)[0] != guess.split(/\s+/)[0]
+    (enemy) =>
+      !(
+        !guess.split(/\s+/).length > 1 &&
+        (enemy.name.split(/\s+/)[0].toLowerCase() == guess ||
+          (enemy.nick != "NO_NICK" &&
+            enemy.nick.split(/\s+/)[0].toLowerCase() == guess))
+      ) ||
+      enemy.name.toLowerCase() == guess ||
+      (enemy.nick != "NO_NICK" && enemy.nick.toLowerCase() == guess)
   );
   input.value = "";
+  counter.innerHTML = score;
 }
 
 // spawns an enemy
@@ -83,6 +103,7 @@ function spawn() {
   area.appendChild(element);
   const enemy = new Enemy(
     enemyData.name,
+    enemyData.nick,
     (1000 + Math.random() * 10000) | 0,
     element
   );

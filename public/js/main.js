@@ -48,7 +48,7 @@ function tick() {
   if (
     // if guess is only for firt name, compare only to first name, otherwise require full name
     // for people with nicknames, also accept nicknames
-    (!guess.includes(" ") &&
+    (!guess.split(/\s+/).length > 1 &&
       (current.name.split(/\s+/)[0].toLowerCase() == guess ||
         (current.nick != "NO_NICK" &&
           current.nick.split(/\s+/)[0].toLowerCase() == guess))) ||
