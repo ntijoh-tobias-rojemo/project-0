@@ -12,6 +12,10 @@ class App < Sinatra::Base
         erb :login
     end
 
+    get '/admin' do
+        erb :admin
+    end
+
     get '/:classid' do |classid|
         @datastring = People.class_as_string(classid)
         erb :main
@@ -38,10 +42,6 @@ class App < Sinatra::Base
         erb :defence
     end  
 
-    get '/admin' do
-        erb :admin
-    end
-
     post '/login' do
         id = Users.login(params[:username], params[:password])
         session[:id] = id
@@ -52,5 +52,9 @@ class App < Sinatra::Base
     post '/register' do
         Users.register(params[:username], params[:password])
         redirect :"/login"
+    end
+
+    post '/create_student' do
+        
     end
 end
