@@ -36,6 +36,7 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt
+  rack
   rerun
   sinatra
   sqlite3
