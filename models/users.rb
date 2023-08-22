@@ -1,3 +1,6 @@
+require 'sqlite3'
+require 'bcrypt'
+
 class Users
 
     #Returnerar samtligt inehåll i databasen.

@@ -1,3 +1,5 @@
+require 'sqlite3'
+
 class People
 
     #Returnerar samtligt inehåll i databasen.
