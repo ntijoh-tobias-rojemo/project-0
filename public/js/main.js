@@ -74,5 +74,10 @@ function tick() {
 
 // when the hint button is pressed, reveal the hint
 hint.addEventListener("click", () => {
-  window.alert(`This should help:\n${current.name.replaceAll(/[^\s]/g, "-")}`);
-})
+  response.innerHTML = `This should help:<br/>${current.name.replaceAll(
+    /[^\s]/g,
+    "-"
+  )}`;
+  response.style.fontSize = "1rem";
+  responseBox.style.backgroundColor = "yellow";
+});
