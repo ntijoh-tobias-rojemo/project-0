@@ -1,5 +1,6 @@
 <script src="/js/results.js"></script>
 
+<!--Lägger varje persons namn och bild i en container med classen grön eller röd beroende på om man gissade rätt eller fel namn.-->
 <% @people.each do |person| %>
     <div class="container <%= @answers & 1 << person["id"] > 0 ? "green" : "red" %>" >
         <p> <%= person["name"] %> </p>
