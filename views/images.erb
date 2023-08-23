@@ -1,9 +1,4 @@
-<header>
-    <h1>Testa dig själv!</h1>
-</header>
 
-<main>
-    <% @people.each do |person| %>
-        <img src="<%= person["image"] %>"/>
-    <% end %>
-</main>
+<% @people.each do |person| %>
+    <img src="<%= person["image"] %>"/>
+<% end %>
