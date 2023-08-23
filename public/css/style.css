@@ -117,6 +117,10 @@ input {
   overflow: hidden;
 }
 
+.defence img {
+  border-radius: 10%;
+}
+
 #game-area {
   width: 99vw;
   height: 90vh;

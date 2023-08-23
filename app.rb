@@ -14,10 +14,12 @@ class App < Sinatra::Base
     end
 
     get '/login' do
+        @title = "Login"
         erb :login
     end
 
     get '/admin' do
+        @title = "Dashboard"
         erb :admin
     end
 
