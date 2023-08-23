@@ -20,6 +20,7 @@ class App < Sinatra::Base
     end
     
     get '/register' do
+        @title = "Register"
         erb :register
     end
 
