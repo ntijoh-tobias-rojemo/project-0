@@ -9,6 +9,7 @@ class App < Sinatra::Base
                                 :path => '/',
                                 :secret => 'Grillkorv!'
 
+    #Roten leder till klass 0 om man inte valt någon
     get '/' do
         redirect :"/0"
     end
@@ -23,6 +24,7 @@ class App < Sinatra::Base
         erb :admin
     end
 
+    #@datastring kommer packas upp och användas i main.js
     get '/:classid' do |classid|
         @title = "Practise"
         @datastring = People.class_as_string(classid)
@@ -54,27 +56,28 @@ class App < Sinatra::Base
         erb :defence
     end  
 
+    #:admin_status blir 1 om användaren är admin, 0 om den ej är det och nil om användaren inte hittas.
     post '/login' do
-        id = Users.login(params[:username], params[:password])
-        session[:id] = id
-        redirect :"/admin" if id
+        session[:admin_status] = Users.login(params[:username], params[:password])
+        redirect :"/admin" if session[:admin_status] == 1
         redirect :"/login"
     end
 
+    #användaren läggs till i databsen, ska den göras ill admin måste det göras manuellt.
     post '/register' do
         Users.register(params[:username], params[:password])
         redirect :"/login"
     end
 
+    #Lägger in en ny elev i databsen om användaren har admin status
     post '/create_student' do
-        p session
-        return 403 unless session[:id]
-        return 403 unless (Users.get(session[:id])["admin"] == 1)
+        return 403 unless session[:admin_status] ==1
         People.create(params[:name], params[:nickname], params[:classid], "/img/#{params[:name]}.jpeg")
         File.open("public/img/#{params[:name]}.jpeg", "wb") {|file| file.write(params[:image][:tempfile].read)} # Stort F File är en klass som defineras inom ruby som används för att interagera med filsustemet, lilla f variabel som definerad i programmet
         redirect :"/admin"
     end
 
+    #Om man inte är satt som admin i databasen (måste nuvarande göras manuellt).
     error 403 do
         @title = "Error 403"
         "Access denied"
