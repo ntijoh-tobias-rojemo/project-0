@@ -7,7 +7,7 @@ class App < Sinatra::Base
     #enable :sessions
     use Rack::Session::Cookie,  :key => 'rack.session',
                                 :path => '/',
-                                :secret => 'your_secret'
+                                :secret => 'Grillkorv!'
 
     get '/' do
         redirect :"/0"
@@ -24,27 +24,32 @@ class App < Sinatra::Base
     end
 
     get '/:classid' do |classid|
+        @title = "Practise"
         @datastring = People.class_as_string(classid)
         erb :main
     end
 
     get '/:classid/images' do |classid|
+        @title = "Test yourself"
         @people = People.class(classid)
         erb :images
     end
 
     get '/:classid/people' do |classid|
+        @title = "Study"
         @people = People.class(classid)
         erb :people
     end
 
     get '/:classid/results/:answers' do |classid, answers|
+        @title = "Results"
         @people = People.class(classid)
         @answers = answers.to_i
         erb :results
     end
 
     get '/:classid/defence' do |classid|
+        @title = "Game"
         @datastring = People.class_as_string(classid)
         erb :defence
     end  
@@ -71,6 +76,7 @@ class App < Sinatra::Base
     end
 
     error 403 do
+        @title = "Error 403"
         "Access denied"
     end
 end
