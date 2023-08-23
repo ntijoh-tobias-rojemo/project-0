@@ -122,6 +122,7 @@ input {
 }
 
 #game-area {
+  left: 0.5vw;
   width: 99vw;
   height: 90vh;
 }
