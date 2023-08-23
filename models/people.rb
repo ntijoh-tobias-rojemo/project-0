@@ -13,15 +13,18 @@ class People
         return data.map { |person| "#{person["id"]}§#{person["image"]}§#{person["name"]}§#{person["nickname"] || "NO_NICK"}" }.join("§§")
     end
 
+    #Returnerar en klass ur databasen
     def self.class(class_id)
         db.execute('SELECT * FROM people WHERE classid = ? ORDER BY id', class_id)
     end
 
+    #Returnerar en klass ur darabasen som en sträng
     def self.class_as_string(class_id)
         data = db.execute('SELECT * FROM people WHERE classid = ? ORDER BY id', class_id)
         return data.map { |person| "#{person["id"]}§#{person["image"]}§#{person["name"]}§#{person["nickname"] || "NO_NICK"}" }.join("§§")
     end
 
+    Lägger till en elev i databasen
     def self.create(name, nickname, classid, image)
         if nickname == ""
             db.execute('INSERT INTO people (name, classid, image) VALUES (?,?,?)', name, classid, image)

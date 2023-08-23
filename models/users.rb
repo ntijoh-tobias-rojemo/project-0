@@ -8,10 +8,12 @@ class Users
         db.execute('SELECT * FROM users ORDER BY id')
     end
 
+    #Returnerar en användare från databsen baserat på id
     def self.get(id)
         db.execute('SELECT * FROM users WHERE id = ? LIMIT 1', id)[0]
     end
 
+    #Returnerar en användares id om lösenordet stämmer 
     def self.login(username, password)
         data = db.execute('SELECT id, password FROM users WHERE username = ?', username)
         return nil if data.empty?
@@ -19,6 +21,7 @@ class Users
         return nil
     end
 
+    #Lägger till en användare i databsen
     def self.register(username, password)
         digest = BCrypt::Password.create(password)
         db.execute('INSERT INTO users (username, password) VALUES (?,?)', username, digest)
