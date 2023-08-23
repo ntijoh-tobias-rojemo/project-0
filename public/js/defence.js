@@ -15,6 +15,9 @@ class Enemy {
     this.element.style.top = `${
       this.calcProgress(this.progress / this.maxProgress) * 100 - 20
     }%`;
+    this.element.style.border = `4px solid hsl(${
+      90 - (120 * this.progress) / this.maxProgress
+    } 50% 50%)`;
   }
 
   calcProgress(progress) {
@@ -122,31 +125,18 @@ function spawn() {
   const enemyData = getNext();
   if (!enemyData) return;
   const element = document.createElement("img");
+  const maxProgress = (1000 + Math.random() * 9000) | 0;
   element.src = enemyData.image;
   area.appendChild(element);
   let enemy;
   const choice = Math.random();
-  if (choice < 0.1) {
-    enemy = new AcceleratingEnemy(
-      enemyData,
-      (1000 + Math.random() * 9000) | 0,
-      element
-    );
-  } else if (choice < 0.2) {
-    enemy = new JumpstartEnemy(
-      enemyData,
-      (1000 + Math.random() * 9000) | 0,
-      element
-    );
-  } else if (choice < 0.3) {
-    enemy = new SneakyEnemy(
-      enemyData,
-      (1000 + Math.random() * 9000) | 0,
-      element
-    );
-  } else {
-    enemy = new Enemy(enemyData, (1000 + Math.random() * 9000) | 0, element);
-  }
+  if (choice < 0.1)
+    enemy = new AcceleratingEnemy(enemyData, maxProgress, element);
+  else if (choice < 0.2)
+    enemy = new JumpstartEnemy(enemyData, maxProgress, element);
+  else if (choice < 0.3)
+    enemy = new SneakyEnemy(enemyData, maxProgress, element);
+  else enemy = new Enemy(enemyData, maxProgress, element);
 
   active.push(enemy);
 }
