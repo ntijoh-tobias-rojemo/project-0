@@ -14,7 +14,8 @@ const data = document
 // get elements
 const display = document.getElementById("image-display");
 const input = document.getElementById("input-field");
-const button = document.getElementById("submit-button");
+const submit = document.getElementById("submit-button");
+const hint = document.getElementById("hint-button");
 const counter = document.getElementById("counter");
 const responseBox = document.getElementById("response-box");
 const response = document.getElementById("response");
@@ -35,8 +36,8 @@ document.getElementById("total").innerHTML = data.length;
 var current = getNext();
 updatePage();
 
-// each time the button is clicked or enter is pressed in the textbox, run the page logic
-button.addEventListener("click", tick);
+// each time the submit button is clicked or enter is pressed in the textbox, run the page logic
+submit.addEventListener("click", tick);
 input.addEventListener("keydown", (event) => {
   if (event.key == "Enter") {
     tick();
@@ -46,7 +47,7 @@ input.addEventListener("keydown", (event) => {
 function tick() {
   const guess = input.value.toLowerCase().split(/\s+/).join(" ");
   if (
-    // if guess is only for firt name, compare only to first name, otherwise require full name
+    // if guess is only for first name, compare only to first name, otherwise require full name
     // for people with nicknames, also accept nicknames
     (guess.split(/\s+/).length == 1 &&
       (current.name.split(/\s+/)[0].toLowerCase() == guess ||
@@ -70,3 +71,8 @@ function tick() {
   current = getNext();
   updatePage();
 }
+
+// when the hint button is pressed, reveal the hint
+hint.addEventListener("click", () => {
+  window.alert(`This should help:\n${current.name.replaceAll(/[^\s]/g, "-")}`);
+})
