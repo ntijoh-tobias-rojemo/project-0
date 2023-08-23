@@ -112,7 +112,8 @@ input {
   height: min-content;
 }
 
-.defence, #game-area {
+.defence,
+#game-area {
   overflow: hidden;
 }
 
@@ -121,9 +122,16 @@ input {
   height: 90vh;
 }
 
+.defence input,
+form input {
+  border-radius: 20px;
+  border: 1px solid black;
+}
+
 .defence input {
-  bottom: 0;
-  left: auto;
+  bottom: 2.5vh;
+  width: 20vw;
+  left: 40vw;
   position: fixed;
 }
 
