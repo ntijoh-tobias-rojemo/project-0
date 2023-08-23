@@ -60,7 +60,7 @@ input,
   margin: 1px;
 }
 
-img {
+img:not(#rimage) {
   width: 14vw;
 }
 
@@ -75,11 +75,42 @@ img {
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
 }
-
+/*   /(//////////////////////////////////////////////////// */
 input,
 button {
   width: 25vw;
   border: 1px solid gray;
+
+  
+}
+#register button, #register input,
+#login button, #login input{
+
+  margin-top: 3vw;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+}
+
+#register, #login{
+
+  position: absolute;
+  top: 12vw;
+  left: 10vw;
+
+
+}
+
+#rimage{
+  height: 100vh;
+  left: 22vw;
+  top: 0vw;
+  position: absolute;
+  
+
 }
 
 button {
@@ -104,7 +135,7 @@ button {
 #response-box,
 input {
   border-top: 0;
-  border-top-left-radius: 0;
+  border-top-left-radius:  0;
   border-top-right-radius: 0;
 }
 
