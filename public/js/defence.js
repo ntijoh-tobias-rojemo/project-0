@@ -1,3 +1,4 @@
+// the base class for each enemy
 class Enemy {
   constructor(data, maxProgress, element) {
     this.data = data;
@@ -9,6 +10,7 @@ class Enemy {
     this.maxProgress = maxProgress;
   }
 
+  // advances the enemy a tick and updates it on the page
   update() {
     this.progress++;
     this.element.style.left = `${this.x * 80}%`;
@@ -20,28 +22,33 @@ class Enemy {
     } 50% 50%)`;
   }
 
+  // the default function for a linear progression
   calcProgress(progress) {
     return progress;
   }
 
+  // removes an enemy from the DOM and adds it back to the list of remaining enemies
   kill() {
     remaining.push(this.data);
     this.element.remove();
   }
 }
 
+// an enemy that attacks from below
 class SneakyEnemy extends Enemy {
   calcProgress(progress) {
     return 1 - Math.log(progress);
   }
 }
 
+// an enemy that starts fast
 class JumpstartEnemy extends Enemy {
   calcProgress(progress) {
     return 2 - 2 ** ((1 - progress) ** 3);
   }
 }
 
+// an enemy that starts slow
 class AcceleratingEnemy extends Enemy {
   calcProgress(progress) {
     return 2 ** (progress ** 5) - 1;
@@ -61,14 +68,17 @@ const gameData = document
     };
   });
 
+ // get elements
 const area = document.getElementById("game-area");
 const input = document.getElementById("input-field");
 const counter = document.getElementById("counter");
 
+// setup
 var remaining = [...gameData];
 var active = [];
 var score = 0;
 
+// run a tick every ms
 setInterval(runTick, 1);
 function runTick() {
   if (Math.random() < 0.002) spawn();
@@ -84,6 +94,7 @@ function runTick() {
   counter.innerHTML = score;
 }
 
+// resolve an attack when a name is submitted
 input.addEventListener("keydown", (event) => {
   if (event.key == "Enter") {
     attack();
@@ -92,6 +103,8 @@ input.addEventListener("keydown", (event) => {
 
 function attack() {
   const guess = input.value.toLowerCase().split(/\s+/).join(" ");
+
+  // remove the enemies from the DOM and adjust score
   active.forEach((enemy) => {
     if (
       (guess.split(/\s+/).length == 1 &&
@@ -105,6 +118,8 @@ function attack() {
       enemy.kill();
     }
   });
+
+  // clean up the active list
   active = active.filter(
     (enemy) =>
       !(
@@ -116,6 +131,8 @@ function attack() {
         (enemy.nick != "NO_NICK" && enemy.nick.toLowerCase() == guess)
       )
   );
+
+  // update page
   input.value = "";
   counter.innerHTML = score;
 }
