@@ -64,7 +64,7 @@ class App < Sinatra::Base
 
     #:admin_status blir 1 om användaren är admin, 0 om den ej är det och nil om användaren inte hittas.
     post '/login' do
-        session[:admin_status] = Users.login(params[:username], params[:password])
+        session[:admin_status] = Users.is_admin(params[:username], params[:password])
         redirect :"/admin" if session[:admin_status] == 1
         redirect :"/login"
     end
